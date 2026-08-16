@@ -6,22 +6,26 @@ on:
     - cron: "45 */6 * * *"
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: nexovmp-fallback-pages
   cancel-in-progress: false
 
 jobs:
-  mirror-and-publish:
+  mirror-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
 
       - name: Construir mirror validado
         run: python3 tools/mirror_primary.py
@@ -35,31 +39,25 @@ jobs:
           test -s site/manifest.json
           test -s site/nexovmp_catalog.json
           test -s site/municipal/manifest.json
-          test -f site/.nojekyll
 
-          echo "Contenido preparado:"
+          echo "Contenido validado:"
           find site -maxdepth 3 -type f -print | sort
 
-      - name: Publicar en rama gh-pages
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Preparar artefacto
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+          include-hidden-files: true
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Confirmar URL publicada
         shell: bash
         run: |
-          set -euo pipefail
-
-          rm -rf /tmp/nexovmp-pages
-          mkdir -p /tmp/nexovmp-pages
-          cp -a site/. /tmp/nexovmp-pages/
-
-          git config user.name "NexoVMP Mirror Bot"
-          git config user.email "nexovmp-mirror@users.noreply.github.com"
-
-          git switch --orphan gh-pages
-
-          git rm -rf . >/dev/null 2>&1 || true
-          find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
-
-          cp -a /tmp/nexovmp-pages/. .
-
-          git add -A
-          git commit -m "chore: actualizar servidor secundario"
-
-          git push --force origin gh-pages
+          echo "Servidor secundario publicado en:"
+          echo "${{ steps.deployment.outputs.page_url }}"
