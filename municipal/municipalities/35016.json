@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "ineCode": "35016",
+  "municipality": "Las Palmas de Gran Canaria",
+  "province": "Las Palmas",
+  "verifiedAt": "15/08/2026",
+  "sourcePublisher": "Ayuntamiento de Las Palmas de Gran Canaria",
+  "ordinance": {
+    "title": "Resolución 8623/2020, de 27 de febrero, por la que se aprueba la regulación transitoria para la circulación de VMP",
+    "bulletin": "Resolución municipal con publicación ordenada en el BOP de Las Palmas",
+    "sourceURL": "https://www.laspalmasgc.es/export/sites/laspalmasgc/.galleries/documentos-trafico-transportes/Anuncio-BOP-exp.-274-2020-1.pdf"
+  },
+  "sections": [
+    {
+      "id": "reglas-clave",
+      "title": "Reglas clave",
+      "items": [
+        {
+          "id": "circulacion-vias-autorizadas",
+          "title": "Circulación solo por vías expresamente autorizadas",
+          "detail": "La regulación municipal autoriza VMP en carriles bici, acera bici, itinerarios ciclistas señalizados en zona peatonal y zonas 30. El resto de vías o tramos no relacionados no quedan autorizados por esta regulación transitoria.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria, apartado 3"
+        },
+        {
+          "id": "aceras-zonas-peatonales",
+          "title": "Prohibidos en aceras y zonas peatonales, salvo itinerario ciclista autorizado",
+          "detail": "No se permite circular por aceras ni demás zonas peatonales, excepto por los itinerarios ciclistas expresamente señalizados y autorizados dentro de zonas peatonales.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        },
+        {
+          "id": "edad-minima",
+          "title": "Edad mínima municipal: 16 años",
+          "detail": "La regulación transitoria de Las Palmas de Gran Canaria establece una edad mínima de 16 años para el uso de VMP.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        }
+      ]
+    },
+    {
+      "id": "conducta-seguridad",
+      "title": "Conducta y seguridad",
+      "items": [
+        {
+          "id": "uso-individual",
+          "title": "Uso individual",
+          "detail": "Está expresamente prohibido circular dos personas en un VMP y también transportar mercancías.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        },
+        {
+          "id": "telefono",
+          "title": "Sin teléfono ni sistemas de comunicación durante la conducción",
+          "detail": "La resolución prohíbe la utilización durante la conducción de dispositivos de telefonía móvil y otros medios o sistemas de comunicación.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        },
+        {
+          "id": "noche",
+          "title": "De noche: alumbrado y elementos reflectantes",
+          "detail": "Se prohíbe la circulación nocturna sin alumbrado y sin prendas o elementos reflectantes.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        },
+        {
+          "id": "velocidad",
+          "title": "Máximo 25 km/h",
+          "detail": "La velocidad debe ajustarse al límite de cada vía autorizada y nunca puede superar 25 km/h.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        },
+        {
+          "id": "alcohol-drogas",
+          "title": "Obligación de someterse a pruebas de alcohol y drogas",
+          "detail": "Los conductores de VMP están obligados a someterse a las pruebas legalmente previstas para detectar alcohol y presencia de drogas.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        }
+      ]
+    },
+    {
+      "id": "itinerarios-autorizados",
+      "title": "Itinerarios ciclistas señalizados en zona peatonal",
+      "items": [
+        {
+          "id": "galicia",
+          "title": "Calle Galicia",
+          "detail": "Itinerario ciclista señalizado autorizado dentro de zona peatonal.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "general-bravo",
+          "title": "General Bravo",
+          "detail": "Tramo entre Malteses y Maninidra.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "luis-morote",
+          "title": "Luis Morote",
+          "detail": "Por vía ciclista.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "plaza-canarias",
+          "title": "Plaza de Canarias",
+          "detail": "Itinerario ciclista señalizado autorizado.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "obispo-codina",
+          "title": "Obispo Codina",
+          "detail": "Tramo entre Espíritu Santo y Juan de Quesada.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "espiritu-santo",
+          "title": "Espíritu Santo",
+          "detail": "Tramo entre Reyes Católicos y Obispo Codina.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        },
+        {
+          "id": "mesa-lopez",
+          "title": "Avenida José Mesa y López",
+          "detail": "Por vía ciclista, entre Base Naval y calle Galicia.",
+          "legalReference": "Resolución 8623/2020 · Regulación transitoria"
+        }
+      ]
+    },
+    {
+      "id": "estacionamiento",
+      "title": "Parada y estacionamiento",
+      "items": [
+        {
+          "id": "regimen-estacionamiento",
+          "title": "Aplican las normas generales de parada y estacionamiento",
+          "detail": "La resolución remite al régimen de infracciones sobre parada y estacionamiento del Reglamento General de Circulación y de la Ordenanza municipal de Tráfico.",
+          "legalReference": "Resolución 8623/2020 · Obligaciones de los conductores"
+        }
+      ]
+    },
+    {
+      "id": "situacion-juridica",
+      "title": "Situación jurídica",
+      "items": [
+        {
+          "id": "caracter-transitorio",
+          "title": "Regulación de carácter transitorio",
+          "detail": "La propia resolución declara que estas instrucciones se aplican hasta la publicación de una nueva Ordenanza de Movilidad. NexoVMP ha verificado el 15/08/2026 que el Ayuntamiento continúa publicando esta resolución y la información municipal VMP como referencia vigente, sin utilizar el borrador participativo como norma aprobada.",
+          "legalReference": "Resolución 8623/2020 · Consideraciones jurídicas"
+        }
+      ]
+    }
+  ],
+  "note": "Ficha municipal verificada con fuentes oficiales del Ayuntamiento de Las Palmas de Gran Canaria el 15/08/2026. La normativa estatal vigente prevalece cuando resulte aplicable y esta ficha no incorpora como vigentes los contenidos del borrador de Ordenanza de Movilidad Sostenible."
+}

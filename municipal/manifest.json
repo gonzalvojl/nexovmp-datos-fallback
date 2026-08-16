@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": 2026081502,
+  "updatedAt": "15/08/2026",
+  "municipalities": [
+    {
+      "ineCode": "35016",
+      "municipality": "Las Palmas de Gran Canaria",
+      "province": "Las Palmas",
+      "status": "verified",
+      "profilePath": "municipalities/35016.json",
+      "sha256": "75d3b2d3d485885106feddaee655d711d7b8292e9ae69c29c4a4c3556c2c4c70",
+      "verifiedAt": "15/08/2026"
+    }
+  ]
+}

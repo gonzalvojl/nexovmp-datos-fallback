@@ -1,0 +1,10 @@
+{
+  "catalogURL": "nexovmp_catalog.json",
+  "catalogVersion": 2026081513,
+  "certificateCount": 409,
+  "officialUpdateDate": "11/08/2026",
+  "publishedAt": "2026-08-15T13:36:21+02:00",
+  "schemaVersion": 1,
+  "sha256": "521cbf3b0c3f7e410b5c281f824fa26a13ddd50b5b230e9183885929c404a7f1",
+  "vehicleCount": 395
+}
