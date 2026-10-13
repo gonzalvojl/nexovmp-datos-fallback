@@ -30,6 +30,18 @@ jobs:
       - name: Construir mirror validado
         run: python3 tools/mirror_primary.py
 
+      - name: Añadir catálogo de infracciones
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -s infractions/manifest.json
+          test -s infractions/nexovmp_infractions.json
+
+          mkdir -p site/infractions
+          cp infractions/manifest.json site/infractions/manifest.json
+          cp infractions/nexovmp_infractions.json site/infractions/nexovmp_infractions.json
+
       - name: Verificar contenido generado
         shell: bash
         run: |
@@ -39,6 +51,8 @@ jobs:
           test -s site/manifest.json
           test -s site/nexovmp_catalog.json
           test -s site/municipal/manifest.json
+          test -s site/infractions/manifest.json
+          test -s site/infractions/nexovmp_infractions.json
 
           echo "Contenido validado:"
           find site -maxdepth 3 -type f -print | sort
