@@ -2,6 +2,12 @@ name: NexoVMP · Servidor secundario
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "tools/mirror_primary.py"
+      - ".github/workflows/mirror-primary.yml"
   schedule:
     - cron: "45 */6 * * *"
 
@@ -34,10 +40,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
           test -s infractions/manifest.json
           test -s infractions/nexovmp_infractions.json
-
           mkdir -p site/infractions
           cp infractions/manifest.json site/infractions/manifest.json
           cp infractions/nexovmp_infractions.json site/infractions/nexovmp_infractions.json
@@ -46,14 +50,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
           test -s site/index.html
           test -s site/manifest.json
           test -s site/nexovmp_catalog.json
+          test -s site/national/manifest.json
+          test -s site/national/rules.json
           test -s site/municipal/manifest.json
           test -s site/infractions/manifest.json
           test -s site/infractions/nexovmp_infractions.json
-
           echo "Contenido validado:"
           find site -maxdepth 3 -type f -print | sort
 
