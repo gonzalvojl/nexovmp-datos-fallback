@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Replica validada del servidor primario NexoVMP hacia GitHub Pages."""
+# Sincronización municipal forzada: dataset 2026101402
 from __future__ import annotations
 import hashlib,json,os,shutil,sys,urllib.error,urllib.parse,urllib.request
 from pathlib import Path
