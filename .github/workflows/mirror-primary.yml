@@ -69,10 +69,13 @@ jobs:
         with:
           path: site
           include-hidden-files: true
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Publicar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Confirmar URL publicada
         shell: bash
