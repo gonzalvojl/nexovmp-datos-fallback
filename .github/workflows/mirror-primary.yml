@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -23,11 +24,11 @@ concurrency:
 jobs:
   mirror-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
 
     steps:
       - name: Descargar repositorio
@@ -71,8 +72,45 @@ jobs:
           include-hidden-files: true
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
 
+      - name: Esperar disponibilidad del artefacto en GitHub
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for intento in $(seq 1 12); do
+            if count=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --jq '.artifacts[] | select(.expired == false) | .name' | awk -v name="$ARTIFACT_NAME" '$0 == name {n++} END {print n+0}'); then
+              if [ "$count" -eq 1 ]; then
+                echo "Artefacto correcto visible en API: $ARTIFACT_NAME"
+                sleep 15
+                exit 0
+              fi
+              if [ "$count" -gt 1 ]; then
+                echo "::error::Artefacto duplicado: $ARTIFACT_NAME"
+                exit 1
+              fi
+            fi
+            echo "Esperando propagación del artefacto ($intento/12)"
+            sleep 10
+          done
+          echo "::error::El artefacto no está disponible en la API de GitHub"
+          exit 1
+
       - name: Publicar en GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Esperar antes de reintentar publicación
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+
+      - name: Reintentar publicación en GitHub Pages
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
         with:
           artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
@@ -81,4 +119,4 @@ jobs:
         shell: bash
         run: |
           echo "Servidor secundario publicado en:"
-          echo "${{ steps.deployment.outputs.page_url }}"
+          echo "${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}"
